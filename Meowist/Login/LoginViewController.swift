@@ -39,6 +39,7 @@ class LoginViewController: UIViewController {
         static let logoTopMargin: CGFloat = 50
         static let logoHeightAndWidth: CGFloat = 100
         static let usernameAndPasswordMargin: CGFloat = 35
+        static let textFieldIconSizes: CGFloat = 25
     }
     
     // MARK: - Views
@@ -90,6 +91,22 @@ class LoginViewController: UIViewController {
         border.layer.borderWidth = 1
         border.layer.borderColor = UIColor.gray.cgColor
         return border
+    }()
+    
+    lazy var emailIcon: UIImageView =  {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "emailIcon")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    lazy var passwordIcon: UIImageView =  {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "passwordIcon")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     lazy var forgotLogin: UIButton = {
@@ -169,8 +186,10 @@ class LoginViewController: UIViewController {
         view.addSubview(logo)
         view.addSubview(loginTextFieldBorder)
         loginTextFieldBorder.addSubview(loginTextField)
+        loginTextFieldBorder.addSubview(emailIcon)
         view.addSubview(passwordTextFieldBorder)
         passwordTextFieldBorder.addSubview(passwordTextField)
+        passwordTextFieldBorder.addSubview(passwordIcon)
         view.addSubview(forgotLogin)
         view.addSubview(forgotPassword)
         view.addSubview(signInButton)
@@ -194,9 +213,15 @@ class LoginViewController: UIViewController {
             // login text field
             loginTextField.topAnchor.constraint(equalTo: loginTextFieldBorder.topAnchor, constant: Dimensions.margin),
             loginTextField.leadingAnchor.constraint(equalTo: loginTextFieldBorder.leadingAnchor, constant: Dimensions.margin),
-            loginTextField.trailingAnchor.constraint(equalTo: loginTextFieldBorder.trailingAnchor, constant: -Dimensions.margin),
+            loginTextField.trailingAnchor.constraint(equalTo: emailIcon.leadingAnchor),
             loginTextField.bottomAnchor.constraint(equalTo: loginTextFieldBorder.bottomAnchor, constant: -Dimensions.margin),
             
+            // login text field icon
+            emailIcon.centerYAnchor.constraint(equalTo: loginTextFieldBorder.centerYAnchor),
+            emailIcon.trailingAnchor.constraint(equalTo: loginTextFieldBorder.trailingAnchor, constant:  -Dimensions.margin),
+            emailIcon.heightAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
+            emailIcon.widthAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
+
             // password text field border
             passwordTextFieldBorder.topAnchor.constraint(equalTo: loginTextFieldBorder.bottomAnchor, constant: Dimensions.margin),
             passwordTextFieldBorder.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
@@ -206,8 +231,14 @@ class LoginViewController: UIViewController {
             // password text field
             passwordTextField.topAnchor.constraint(equalTo: passwordTextFieldBorder.topAnchor, constant: Dimensions.margin),
             passwordTextField.leadingAnchor.constraint(equalTo: passwordTextFieldBorder.leadingAnchor, constant: Dimensions.margin),
-            passwordTextField.trailingAnchor.constraint(equalTo: passwordTextFieldBorder.trailingAnchor, constant: -Dimensions.margin),
+            passwordTextField.trailingAnchor.constraint(equalTo: passwordIcon.leadingAnchor),
             passwordTextField.bottomAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: -Dimensions.margin),
+            
+            // password text field icon
+            passwordIcon.centerYAnchor.constraint(equalTo: passwordTextFieldBorder.centerYAnchor),
+            passwordIcon.trailingAnchor.constraint(equalTo: passwordTextFieldBorder.trailingAnchor, constant:  -Dimensions.margin),
+            passwordIcon.heightAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
+            passwordIcon.widthAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
             
             // forgot login
             forgotLogin.topAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.margin),
