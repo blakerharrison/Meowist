@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891763C41779F09EECD3BAE9 /* libPods-MeowistTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC6F231CDBE305451E5DC4F /* libPods-MeowistTests.a */; };
+		AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */; };
 		ACFB56CF250DA4CE006AA8BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */; };
 		ACFB56D1250DA4CE006AA8BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56D0250DA4CE006AA8BB /* SceneDelegate.swift */; };
 		ACFB56D3250DA4CE006AA8BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56D2250DA4CE006AA8BB /* ViewController.swift */; };
@@ -14,6 +16,7 @@
 		ACFB56D8250DA4CF006AA8BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACFB56D7250DA4CF006AA8BB /* Assets.xcassets */; };
 		ACFB56DB250DA4CF006AA8BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */; };
 		ACFB56E6250DA4CF006AA8BB /* MeowistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56E5250DA4CF006AA8BB /* MeowistTests.swift */; };
+		E87F082B389B0BFD24BB4619 /* libPods-Meowist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F691E63CFF9085836E8A93 /* libPods-Meowist.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03D376F496453D570B33B001 /* Pods-MeowistTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeowistTests.release.xcconfig"; path = "Target Support Files/Pods-MeowistTests/Pods-MeowistTests.release.xcconfig"; sourceTree = "<group>"; };
+		3DC6F231CDBE305451E5DC4F /* libPods-MeowistTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeowistTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BEBBB90A7D41944A121E2D1 /* Pods-MeowistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeowistTests.debug.xcconfig"; path = "Target Support Files/Pods-MeowistTests/Pods-MeowistTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A4F691E63CFF9085836E8A93 /* libPods-Meowist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meowist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACFB56CB250DA4CE006AA8BB /* Meowist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meowist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFB56D0250DA4CE006AA8BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +46,8 @@
 		ACFB56E1250DA4CF006AA8BB /* MeowistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeowistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFB56E5250DA4CF006AA8BB /* MeowistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowistTests.swift; sourceTree = "<group>"; };
 		ACFB56E7250DA4CF006AA8BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECE445831F9EF553CA2652E8 /* Pods-Meowist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meowist.release.xcconfig"; path = "Target Support Files/Pods-Meowist/Pods-Meowist.release.xcconfig"; sourceTree = "<group>"; };
+		ED82B4FF0BEA2C20B91451B7 /* Pods-Meowist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meowist.debug.xcconfig"; path = "Target Support Files/Pods-Meowist/Pods-Meowist.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E87F082B389B0BFD24BB4619 /* libPods-Meowist.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +63,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				891763C41779F09EECD3BAE9 /* libPods-MeowistTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CDA0763A222DA76BAB71E28 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED82B4FF0BEA2C20B91451B7 /* Pods-Meowist.debug.xcconfig */,
+				ECE445831F9EF553CA2652E8 /* Pods-Meowist.release.xcconfig */,
+				7BEBBB90A7D41944A121E2D1 /* Pods-MeowistTests.debug.xcconfig */,
+				03D376F496453D570B33B001 /* Pods-MeowistTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		52174CA8BEC41527CCB28319 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4F691E63CFF9085836E8A93 /* libPods-Meowist.a */,
+				3DC6F231CDBE305451E5DC4F /* libPods-MeowistTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ACFB56C2250DA4CE006AA8BB = {
 			isa = PBXGroup;
 			children = (
 				ACFB56CD250DA4CE006AA8BB /* Meowist */,
 				ACFB56E4250DA4CF006AA8BB /* MeowistTests */,
 				ACFB56CC250DA4CE006AA8BB /* Products */,
+				3CDA0763A222DA76BAB71E28 /* Pods */,
+				52174CA8BEC41527CCB28319 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +121,7 @@
 				ACFB56D7250DA4CF006AA8BB /* Assets.xcassets */,
 				ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */,
 				ACFB56DC250DA4CF006AA8BB /* Info.plist */,
+				AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */,
 			);
 			path = Meowist;
 			sourceTree = "<group>";
@@ -106,6 +142,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACFB56EA250DA4CF006AA8BB /* Build configuration list for PBXNativeTarget "Meowist" */;
 			buildPhases = (
+				87962E736DC721D17AB06689 /* [CP] Check Pods Manifest.lock */,
 				ACFB56C7250DA4CE006AA8BB /* Sources */,
 				ACFB56C8250DA4CE006AA8BB /* Frameworks */,
 				ACFB56C9250DA4CE006AA8BB /* Resources */,
@@ -123,6 +160,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACFB56ED250DA4CF006AA8BB /* Build configuration list for PBXNativeTarget "MeowistTests" */;
 			buildPhases = (
+				6334649AA94ACACCB2191DD9 /* [CP] Check Pods Manifest.lock */,
 				ACFB56DD250DA4CF006AA8BB /* Sources */,
 				ACFB56DE250DA4CF006AA8BB /* Frameworks */,
 				ACFB56DF250DA4CF006AA8BB /* Resources */,
@@ -181,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFB56DB250DA4CF006AA8BB /* LaunchScreen.storyboard in Resources */,
+				AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */,
 				ACFB56D8250DA4CF006AA8BB /* Assets.xcassets in Resources */,
 				ACFB56D6250DA4CE006AA8BB /* Main.storyboard in Resources */,
 			);
@@ -194,6 +233,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6334649AA94ACACCB2191DD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeowistTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87962E736DC721D17AB06689 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meowist-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ACFB56C7250DA4CE006AA8BB /* Sources */ = {
@@ -360,6 +446,7 @@
 		};
 		ACFB56EB250DA4CF006AA8BB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED82B4FF0BEA2C20B91451B7 /* Pods-Meowist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +465,7 @@
 		};
 		ACFB56EC250DA4CF006AA8BB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECE445831F9EF553CA2652E8 /* Pods-Meowist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +484,7 @@
 		};
 		ACFB56EE250DA4CF006AA8BB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BEBBB90A7D41944A121E2D1 /* Pods-MeowistTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,6 +507,7 @@
 		};
 		ACFB56EF250DA4CF006AA8BB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03D376F496453D570B33B001 /* Pods-MeowistTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
