@@ -21,6 +21,9 @@ class LoginViewController: UIViewController {
         static let errorAlertTitleText = "Something went wrong"
         static let successAlertTitleText = "Success"
         static let okButtonText = "OK"
+        static let forgotPassword = "forgot password"
+        static let forgotLogin = "forgot login"
+        static let comingSoon = "Coming soon"
     }
     
     // MARK: - Dimensions
@@ -35,6 +38,7 @@ class LoginViewController: UIViewController {
         static let activityIndicatorHeightAndWidth: CGFloat = 100
         static let logoTopMargin: CGFloat = 50
         static let logoHeightAndWidth: CGFloat = 100
+        static let usernameAndPasswordMargin: CGFloat = 35
     }
     
     // MARK: - Views
@@ -88,6 +92,30 @@ class LoginViewController: UIViewController {
         return border
     }()
     
+    lazy var forgotLogin: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(Strings.forgotLogin, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .clear
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = Theme.Fonts.hyperlink
+        button.addTarget(self, action: #selector(forgotLoginTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var forgotPassword: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(Strings.forgotPassword, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .clear
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = Theme.Fonts.hyperlink
+        button.addTarget(self, action: #selector(forgotPasswordTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var signInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -97,7 +125,7 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 25
         button.backgroundColor = Theme.Colors.secondary
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(signIn(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signInTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -108,8 +136,8 @@ class LoginViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(signUp(_:)), for: .touchUpInside)
-        button.titleLabel?.font = UIFont(name: "Helvetica", size: 14)
+        button.addTarget(self, action: #selector(signUpTapped(_:)), for: .touchUpInside)
+        button.titleLabel?.font = Theme.Fonts.hyperlink
         return button
     }()
     
@@ -128,7 +156,6 @@ class LoginViewController: UIViewController {
         setupView()
         addSubviews()
         setupConstraints()
-        
     }
     
     // MARK: - Setups
@@ -137,12 +164,15 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard (_:))))
     }
+    
     private func addSubviews() {
         view.addSubview(logo)
         view.addSubview(loginTextFieldBorder)
         loginTextFieldBorder.addSubview(loginTextField)
         view.addSubview(passwordTextFieldBorder)
         passwordTextFieldBorder.addSubview(passwordTextField)
+        view.addSubview(forgotLogin)
+        view.addSubview(forgotPassword)
         view.addSubview(signInButton)
         view.addSubview(signUpButton)
     }
@@ -179,6 +209,14 @@ class LoginViewController: UIViewController {
             passwordTextField.trailingAnchor.constraint(equalTo: passwordTextFieldBorder.trailingAnchor, constant: -Dimensions.margin),
             passwordTextField.bottomAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: -Dimensions.margin),
             
+            // forgot login
+            forgotLogin.topAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.margin),
+            forgotLogin.leadingAnchor.constraint(equalTo: passwordTextFieldBorder.leadingAnchor, constant: Dimensions.usernameAndPasswordMargin),
+            
+            // forgot password
+            forgotPassword.topAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.margin),
+            forgotPassword.trailingAnchor.constraint(equalTo: passwordTextFieldBorder.trailingAnchor, constant: -Dimensions.usernameAndPasswordMargin),
+            
             // sign in button
             signInButton.topAnchor.constraint(greaterThanOrEqualTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.textFieldToButtonSpacing),
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
@@ -199,7 +237,15 @@ class LoginViewController: UIViewController {
 // MARK: - Actions
 extension LoginViewController {
     
-     @objc private func signIn(_ sender: UIButton) {
+    @objc private func signInTapped(_ sender: UIButton) {
+        signIn()
+    }
+    
+    @objc private func signUpTapped(_ sender: UIButton) {
+        signUp()
+    }
+    
+    @objc private func signIn() {
         guard let email = loginTextField.text, let password = passwordTextField.text else { return }
         showLoadingIndicator()
         Auth.auth().signIn(withEmail: email, password: password, completion:  { result, error in
@@ -212,19 +258,28 @@ extension LoginViewController {
         })
     }
     
-    @objc private func signUp(_ sender: UIButton) {
+    @objc private func signUp() {
+        // TODO: Move this code to the sign up view controller
         guard let email = loginTextField.text, let password = passwordTextField.text else { return }
         showLoadingIndicator()
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             self.hideLoadingIndicator()
             guard error == nil else {
-                self.presentAlert(with: Strings.errorAlertTitleText, description: error?.localizedDescription ?? "")
+                self.presentAlert(with: Strings.errorAlertTitleText, description: error?.localizedDescription)
                 return
             }
-            self.presentAlert(with: Strings.successAlertTitleText, description: result?.user.email ?? "")
+            self.presentAlert(with: Strings.successAlertTitleText, description: result?.user.email)
         }
     }
     
+    @objc private func forgotLoginTapped(_ sender: UIButton) {
+        presentAlert(with: Strings.comingSoon)
+    }
+    
+    @objc private func forgotPasswordTapped(_ sender: UIButton) {
+        presentAlert(with: Strings.comingSoon)
+    }
+
     @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         loginTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
@@ -247,7 +302,7 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - Private
 extension LoginViewController {
     
-    private func presentAlert(with title: String, description: String) {
+    private func presentAlert(with title: String, description: String? = "") {
         let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Strings.okButtonText, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
