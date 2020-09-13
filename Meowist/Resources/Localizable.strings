@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Meowist
+
+  Created by bhrs on 9/13/20.
+  Copyright © 2020 Blake. All rights reserved.
+*/
+
+"email_placeholder_text" = "Email";
+"password_placeholder_text" = "Password";
+"sign_in_button_title" = "Sign In";
+"sign_up_button_title" = "sign up here";
+"general_alert_title" = "Something went wrong";
+"success_alert_title" = "Success";
+"ok_button_text" = "OK";
+"forgot_login_button_title" = "forgot login";
+"forgot_password_button_title" = "forgot password";
+"coming_soon_alert_title" = "Coming soon";

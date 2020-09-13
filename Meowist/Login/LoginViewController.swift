@@ -10,22 +10,7 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
-    
-    // MARK: - Hardcoded Strings
-    // TODO: Move these to a localizable file
-    private struct Strings {
-        static let emailPlaceholder = "Email"
-        static let passwordPlaceholder = "Password"
-        static let signInButtonText = "Sign In"
-        static let signUpButtonText = "sign up here"
-        static let errorAlertTitleText = "Something went wrong"
-        static let successAlertTitleText = "Success"
-        static let okButtonText = "OK"
-        static let forgotPassword = "forgot password"
-        static let forgotLogin = "forgot login"
-        static let comingSoon = "Coming soon"
-    }
-    
+
     // MARK: - Dimensions
     private struct Dimensions {
         static let margin: CGFloat = 16
@@ -54,7 +39,7 @@ class LoginViewController: UIViewController {
     lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = Strings.emailPlaceholder
+        textField.placeholder = NSLocalizedString("email_placeholder_text", comment: "")
         textField.backgroundColor = .clear
         textField.returnKeyType = .next
         textField.keyboardType = .emailAddress
@@ -65,7 +50,7 @@ class LoginViewController: UIViewController {
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = Strings.passwordPlaceholder
+        textField.placeholder = NSLocalizedString("password_placeholder_text", comment: "")
         textField.backgroundColor = .clear
         textField.returnKeyType = .done
         textField.isSecureTextEntry = true
@@ -112,7 +97,7 @@ class LoginViewController: UIViewController {
     lazy var forgotLogin: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(Strings.forgotLogin, for: .normal)
+        button.setTitle(NSLocalizedString("forgot_login_button_title", comment: ""), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(.systemBlue, for: .normal)
@@ -124,7 +109,7 @@ class LoginViewController: UIViewController {
     lazy var forgotPassword: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(Strings.forgotPassword, for: .normal)
+        button.setTitle(NSLocalizedString("forgot_password_button_title", comment: ""), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(.systemBlue, for: .normal)
@@ -136,7 +121,7 @@ class LoginViewController: UIViewController {
     lazy var signInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(Strings.signInButtonText, for: .normal)
+        button.setTitle(NSLocalizedString("sign_in_button_title", comment: ""), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 25
@@ -149,7 +134,7 @@ class LoginViewController: UIViewController {
     lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(Strings.signUpButtonText, for: .normal)
+        button.setTitle(NSLocalizedString("sign_up_button_title", comment: ""), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(.systemBlue, for: .normal)
@@ -282,10 +267,10 @@ extension LoginViewController {
         Auth.auth().signIn(withEmail: email, password: password, completion:  { result, error in
             self.hideLoadingIndicator()
             guard error == nil else {
-                self.presentAlert(with: Strings.errorAlertTitleText, description: error?.localizedDescription ?? "")
+                self.presentAlert(with: NSLocalizedString("general_alert_title", comment: ""), description: error?.localizedDescription ?? "")
                 return
             }
-            self.presentAlert(with: Strings.successAlertTitleText, description: result?.user.email ?? "")
+            self.presentAlert(with: NSLocalizedString("success_alert_title", comment: ""), description: result?.user.email ?? "")
         })
     }
     
@@ -296,19 +281,19 @@ extension LoginViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             self.hideLoadingIndicator()
             guard error == nil else {
-                self.presentAlert(with: Strings.errorAlertTitleText, description: error?.localizedDescription)
+                self.presentAlert(with: NSLocalizedString("general_alert_title", comment: ""), description: error?.localizedDescription)
                 return
             }
-            self.presentAlert(with: Strings.successAlertTitleText, description: result?.user.email)
+            self.presentAlert(with: NSLocalizedString("success_alert_title", comment: ""), description: result?.user.email)
         }
     }
     
     @objc private func forgotLoginTapped(_ sender: UIButton) {
-        presentAlert(with: Strings.comingSoon)
+        presentAlert(with: NSLocalizedString("coming_soon_alert_title", comment: ""))
     }
     
     @objc private func forgotPasswordTapped(_ sender: UIButton) {
-        presentAlert(with: Strings.comingSoon)
+        presentAlert(with: NSLocalizedString("coming_soon_alert_title", comment: ""))
     }
 
     @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -335,7 +320,7 @@ extension LoginViewController {
     
     private func presentAlert(with title: String, description: String? = "") {
         let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.okButtonText, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok_button_text", comment: ""), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
