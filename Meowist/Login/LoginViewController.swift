@@ -125,13 +125,18 @@ class LoginViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        setupView()
         addSubviews()
         setupConstraints()
+        
     }
     
     // MARK: - Setups
+    private func setupView() {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard (_:))))
+    }
     private func addSubviews() {
         view.addSubview(logo)
         view.addSubview(loginTextFieldBorder)
@@ -182,8 +187,6 @@ class LoginViewController: UIViewController {
             
             // sign up button
             signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: Dimensions.margin),
-//            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
-//            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight),
             signInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
@@ -220,6 +223,11 @@ extension LoginViewController {
             }
             self.presentAlert(with: Strings.successAlertTitleText, description: result?.user.email ?? "")
         }
+    }
+    
+    @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        loginTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
 }
