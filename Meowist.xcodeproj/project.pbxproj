@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2EA929C18D560BA7134EC668 /* libPods-MeowistTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1EC842F740DBBF2BAB48 /* libPods-MeowistTests.a */; };
 		AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */; };
+		ACB22DA3250DEAA100A5083B /* meowistLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB22DA2250DEAA100A5083B /* meowistLogo.png */; };
+		ACB22DA5250DEF3A00A5083B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB22DA4250DEF3A00A5083B /* Theme.swift */; };
 		ACC1B228250DCA3D007A9B02 /* CustomLoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1B227250DCA3D007A9B02 /* CustomLoadingIndicatorView.swift */; };
 		ACFB56CF250DA4CE006AA8BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */; };
 		ACFB56D1250DA4CE006AA8BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56D0250DA4CE006AA8BB /* SceneDelegate.swift */; };
@@ -36,6 +38,8 @@
 		34064A6ACA578E20F856E66B /* libPods-Meowist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meowist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BEBBB90A7D41944A121E2D1 /* Pods-MeowistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeowistTests.debug.xcconfig"; path = "Target Support Files/Pods-MeowistTests/Pods-MeowistTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ACB22DA2250DEAA100A5083B /* meowistLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meowistLogo.png; sourceTree = "<group>"; };
+		ACB22DA4250DEF3A00A5083B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		ACC1B227250DCA3D007A9B02 /* CustomLoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingIndicatorView.swift; sourceTree = "<group>"; };
 		ACFB56CB250DA4CE006AA8BB /* Meowist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meowist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				ACFB56D7250DA4CF006AA8BB /* Assets.xcassets */,
+				ACB22DA4250DEF3A00A5083B /* Theme.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */,
 				ACFB56DC250DA4CF006AA8BB /* Info.plist */,
 				AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */,
+				ACB22DA2250DEAA100A5083B /* meowistLogo.png */,
 				ACC1B22A250DE155007A9B02 /* ReusableViews */,
 				ACC1B22B250DE183007A9B02 /* Resources */,
 				ACC1B229250DE13A007A9B02 /* Login */,
@@ -248,6 +254,7 @@
 				AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */,
 				ACFB56D8250DA4CF006AA8BB /* Assets.xcassets in Resources */,
 				ACFB56D6250DA4CE006AA8BB /* Main.storyboard in Resources */,
+				ACB22DA3250DEAA100A5083B /* meowistLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +321,7 @@
 			files = (
 				ACC1B228250DCA3D007A9B02 /* CustomLoadingIndicatorView.swift in Sources */,
 				ACFB56D3250DA4CE006AA8BB /* LoginViewController.swift in Sources */,
+				ACB22DA5250DEF3A00A5083B /* Theme.swift in Sources */,
 				ACFB56CF250DA4CE006AA8BB /* AppDelegate.swift in Sources */,
 				ACFB56D1250DA4CE006AA8BB /* SceneDelegate.swift in Sources */,
 			);

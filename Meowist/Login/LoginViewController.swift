@@ -11,23 +11,45 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Hardcoded Strings
+    // TODO: Move these to a localizable file
+    private struct Strings {
+        static let emailPlaceholder = "Email"
+        static let passwordPlaceholder = "Password"
+        static let signInButtonText = "Sign In"
+        static let signUpButtonText = "sign up here"
+        static let errorAlertTitleText = "Something went wrong"
+        static let successAlertTitleText = "Success"
+        static let okButtonText = "OK"
+    }
+    
     // MARK: - Dimensions
     private struct Dimensions {
         static let margin: CGFloat = 16
-        static let textFieldTopMargin: CGFloat = 175
-        static let textFieldHeight: CGFloat = 65
+        static let textFieldTopMargin: CGFloat = 30
+        static let textFieldHeight: CGFloat = 60
         static let textFieldToButtonSpacing: CGFloat = 35
         static let textFieldContainerMargin: CGFloat = 10
-        static let bottomMargin: CGFloat = 250
+        static let bottomMargin: CGFloat = 90
         static let buttonHeight: CGFloat = 50
         static let activityIndicatorHeightAndWidth: CGFloat = 100
+        static let logoTopMargin: CGFloat = 50
+        static let logoHeightAndWidth: CGFloat = 100
     }
     
     // MARK: - Views
+    lazy var logo: UIImageView =  {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "meowistLogo")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Email"
+        textField.placeholder = Strings.emailPlaceholder
         textField.backgroundColor = .clear
         textField.returnKeyType = .next
         textField.keyboardType = .emailAddress
@@ -38,7 +60,7 @@ class LoginViewController: UIViewController {
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Password"
+        textField.placeholder = Strings.passwordPlaceholder
         textField.backgroundColor = .clear
         textField.returnKeyType = .done
         textField.isSecureTextEntry = true
@@ -69,12 +91,12 @@ class LoginViewController: UIViewController {
     lazy var signInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle(Strings.signInButtonText, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .clear
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.cornerRadius = 25
+        button.backgroundColor = Theme.Colors.secondary
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(signIn(_:)), for: .touchUpInside)
         return button
     }()
@@ -82,13 +104,12 @@ class LoginViewController: UIViewController {
     lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle(Strings.signUpButtonText, for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(signUp(_:)), for: .touchUpInside)
         button.backgroundColor = .clear
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray.cgColor
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(signUp(_:)), for: .touchUpInside)
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 14)
         return button
     }()
     
@@ -105,12 +126,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         addSubviews()
         setupConstraints()
     }
     
     // MARK: - Setups
     private func addSubviews() {
+        view.addSubview(logo)
         view.addSubview(loginTextFieldBorder)
         loginTextFieldBorder.addSubview(loginTextField)
         view.addSubview(passwordTextFieldBorder)
@@ -121,8 +144,14 @@ class LoginViewController: UIViewController {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            // logo
+            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Dimensions.logoTopMargin),
+            logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logo.heightAnchor.constraint(equalToConstant: Dimensions.logoHeightAndWidth),
+            logo.widthAnchor.constraint(equalToConstant: Dimensions.logoHeightAndWidth),
+            
             // login text field border
-            loginTextFieldBorder.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Dimensions.textFieldTopMargin),
+            loginTextFieldBorder.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: Dimensions.textFieldTopMargin),
             loginTextFieldBorder.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
             loginTextFieldBorder.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             loginTextFieldBorder.heightAnchor.constraint(equalToConstant: Dimensions.textFieldHeight),
@@ -146,17 +175,19 @@ class LoginViewController: UIViewController {
             passwordTextField.bottomAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: -Dimensions.margin),
             
             // sign in button
-            signInButton.topAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.textFieldToButtonSpacing),
+            signInButton.topAnchor.constraint(greaterThanOrEqualTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.textFieldToButtonSpacing),
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             signInButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight),
             
             // sign up button
             signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: Dimensions.margin),
-            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
-            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
-//            signUpButton.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Dimensions.bottomMargin),
-            signUpButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight)
+//            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
+//            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
+            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signUpButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight),
+            signInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
+            -Dimensions.bottomMargin)
         ])
     }
     
@@ -171,10 +202,10 @@ extension LoginViewController {
         Auth.auth().signIn(withEmail: email, password: password, completion:  { result, error in
             self.hideLoadingIndicator()
             guard error == nil else {
-                self.presentAlert(with: "Something when wrong", description: error?.localizedDescription ?? "")
+                self.presentAlert(with: Strings.errorAlertTitleText, description: error?.localizedDescription ?? "")
                 return
             }
-            self.presentAlert(with: "Success", description: result?.user.email ?? "")
+            self.presentAlert(with: Strings.successAlertTitleText, description: result?.user.email ?? "")
         })
     }
     
@@ -184,10 +215,10 @@ extension LoginViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             self.hideLoadingIndicator()
             guard error == nil else {
-                self.presentAlert(with: "Something when wrong", description: error?.localizedDescription ?? "")
+                self.presentAlert(with: Strings.errorAlertTitleText, description: error?.localizedDescription ?? "")
                 return
             }
-            self.presentAlert(with: "Success", description: result?.user.email ?? "")
+            self.presentAlert(with: Strings.successAlertTitleText, description: result?.user.email ?? "")
         }
     }
     
@@ -210,7 +241,7 @@ extension LoginViewController {
     
     private func presentAlert(with title: String, description: String) {
         let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: Strings.okButtonText, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
