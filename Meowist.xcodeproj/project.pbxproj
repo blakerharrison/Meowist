@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2EA929C18D560BA7134EC668 /* libPods-MeowistTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1EC842F740DBBF2BAB48 /* libPods-MeowistTests.a */; };
+		AC35FF3E250ED83A00FFFC1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC35FF3D250ED83A00FFFC1F /* Localizable.strings */; };
 		AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */; };
 		ACB22DA3250DEAA100A5083B /* meowistLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB22DA2250DEAA100A5083B /* meowistLogo.png */; };
 		ACB22DA5250DEF3A00A5083B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB22DA4250DEF3A00A5083B /* Theme.swift */; };
@@ -37,6 +38,7 @@
 		0A5A1EC842F740DBBF2BAB48 /* libPods-MeowistTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeowistTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34064A6ACA578E20F856E66B /* libPods-Meowist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meowist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BEBBB90A7D41944A121E2D1 /* Pods-MeowistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeowistTests.debug.xcconfig"; path = "Target Support Files/Pods-MeowistTests/Pods-MeowistTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC35FF3D250ED83A00FFFC1F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACB22DA2250DEAA100A5083B /* meowistLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meowistLogo.png; sourceTree = "<group>"; };
 		ACB22DA4250DEF3A00A5083B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				ACFB56D7250DA4CF006AA8BB /* Assets.xcassets */,
 				ACB22DA4250DEF3A00A5083B /* Theme.swift */,
+				AC35FF3D250ED83A00FFFC1F /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -146,14 +149,14 @@
 			children = (
 				ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */,
 				ACFB56D0250DA4CE006AA8BB /* SceneDelegate.swift */,
+				ACC1B22A250DE155007A9B02 /* ReusableViews */,
+				ACC1B22B250DE183007A9B02 /* Resources */,
+				ACC1B229250DE13A007A9B02 /* Login */,
 				ACFB56D4250DA4CE006AA8BB /* Main.storyboard */,
 				ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */,
 				ACFB56DC250DA4CF006AA8BB /* Info.plist */,
 				AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */,
 				ACB22DA2250DEAA100A5083B /* meowistLogo.png */,
-				ACC1B22A250DE155007A9B02 /* ReusableViews */,
-				ACC1B22B250DE183007A9B02 /* Resources */,
-				ACC1B229250DE13A007A9B02 /* Login */,
 			);
 			path = Meowist;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFB56DB250DA4CF006AA8BB /* LaunchScreen.storyboard in Resources */,
+				AC35FF3E250ED83A00FFFC1F /* Localizable.strings in Resources */,
 				AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */,
 				ACFB56D8250DA4CF006AA8BB /* Assets.xcassets in Resources */,
 				ACFB56D6250DA4CE006AA8BB /* Main.storyboard in Resources */,
