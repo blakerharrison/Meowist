@@ -3,8 +3,10 @@
 
 target 'Meowist' do
 
+# use_frameworks!
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
+# pod 'FirebaseUI'
 
   target 'MeowistTests' do
     inherit! :search_paths
