@@ -14,109 +14,15 @@ class LoginViewController: UIViewController {
     // MARK: - Dimensions
     private struct Dimensions {
         static let margin: CGFloat = 16
-        static let textFieldTopMargin: CGFloat = 30
-        static let textFieldHeight: CGFloat = 60
-        static let textFieldToButtonSpacing: CGFloat = 35
-        static let textFieldContainerMargin: CGFloat = 10
         static let bottomMargin: CGFloat = 90
         static let buttonHeight: CGFloat = 50
         static let activityIndicatorHeightAndWidth: CGFloat = 100
-        static let logoTopMargin: CGFloat = 50
-        static let logoHeightAndWidth: CGFloat = 100
-        static let usernameAndPasswordMargin: CGFloat = 35
-        static let textFieldIconSizes: CGFloat = 25
+        static let topMargin: CGFloat = 50
     }
     
     // MARK: - Views
-    lazy var logo: UIImageView =  {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "meowistLogo")
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    lazy var loginTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = NSLocalizedString("email_placeholder_text", comment: "")
-        textField.backgroundColor = .clear
-        textField.returnKeyType = .next
-        textField.keyboardType = .emailAddress
-        textField.delegate = self
-        return textField
-    }()
-    
-    lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = NSLocalizedString("password_placeholder_text", comment: "")
-        textField.backgroundColor = .clear
-        textField.returnKeyType = .done
-        textField.isSecureTextEntry = true
-        textField.delegate = self
-        return textField
-    }()
-    
-    lazy var loginTextFieldBorder: UIView = {
-        let border = UIView()
-        border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = .white
-        border.layer.cornerRadius = 5
-        border.layer.borderWidth = 1
-        border.layer.borderColor = UIColor.gray.cgColor
-        return border
-    }()
-    
-    lazy var passwordTextFieldBorder: UIView = {
-        let border = UIView()
-        border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = .white
-        border.layer.cornerRadius = 5
-        border.layer.borderWidth = 1
-        border.layer.borderColor = UIColor.gray.cgColor
-        return border
-    }()
-    
-    lazy var emailIcon: UIImageView =  {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "emailIcon")
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    lazy var passwordIcon: UIImageView =  {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "passwordIcon")
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    lazy var forgotLogin: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("forgot_login_button_title", comment: ""), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .clear
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = Theme.Fonts.hyperlink
-        button.addTarget(self, action: #selector(forgotLoginTapped(_:)), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var forgotPassword: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("forgot_password_button_title", comment: ""), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .clear
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = Theme.Fonts.hyperlink
-        button.addTarget(self, action: #selector(forgotPasswordTapped(_:)), for: .touchUpInside)
-        return button
-    }()
+    private let headerView = LoginHeaderView()
+    private let loginCredentialsView = LoginCredentialsView()
     
     lazy var signInButton: UIButton = {
         let button = UIButton()
@@ -158,6 +64,8 @@ class LoginViewController: UIViewController {
         setupView()
         addSubviews()
         setupConstraints()
+        setupDelegates()
+        addTargets()
     }
     
     // MARK: - Setups
@@ -168,73 +76,25 @@ class LoginViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(logo)
-        view.addSubview(loginTextFieldBorder)
-        loginTextFieldBorder.addSubview(loginTextField)
-        loginTextFieldBorder.addSubview(emailIcon)
-        view.addSubview(passwordTextFieldBorder)
-        passwordTextFieldBorder.addSubview(passwordTextField)
-        passwordTextFieldBorder.addSubview(passwordIcon)
-        view.addSubview(forgotLogin)
-        view.addSubview(forgotPassword)
+        view.addSubview(headerView)
+        view.addSubview(loginCredentialsView)
         view.addSubview(signInButton)
         view.addSubview(signUpButton)
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            // logo
-            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Dimensions.logoTopMargin),
-            logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logo.heightAnchor.constraint(equalToConstant: Dimensions.logoHeightAndWidth),
-            logo.widthAnchor.constraint(equalToConstant: Dimensions.logoHeightAndWidth),
+            // header
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Dimensions.topMargin),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             
-            // login text field border
-            loginTextFieldBorder.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: Dimensions.textFieldTopMargin),
-            loginTextFieldBorder.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
-            loginTextFieldBorder.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
-            loginTextFieldBorder.heightAnchor.constraint(equalToConstant: Dimensions.textFieldHeight),
-            
-            // login text field
-            loginTextField.topAnchor.constraint(equalTo: loginTextFieldBorder.topAnchor, constant: Dimensions.margin),
-            loginTextField.leadingAnchor.constraint(equalTo: loginTextFieldBorder.leadingAnchor, constant: Dimensions.margin),
-            loginTextField.trailingAnchor.constraint(equalTo: emailIcon.leadingAnchor),
-            loginTextField.bottomAnchor.constraint(equalTo: loginTextFieldBorder.bottomAnchor, constant: -Dimensions.margin),
-            
-            // login text field icon
-            emailIcon.centerYAnchor.constraint(equalTo: loginTextFieldBorder.centerYAnchor),
-            emailIcon.trailingAnchor.constraint(equalTo: loginTextFieldBorder.trailingAnchor, constant:  -Dimensions.margin),
-            emailIcon.heightAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
-            emailIcon.widthAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
-
-            // password text field border
-            passwordTextFieldBorder.topAnchor.constraint(equalTo: loginTextFieldBorder.bottomAnchor, constant: Dimensions.margin),
-            passwordTextFieldBorder.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
-            passwordTextFieldBorder.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
-            passwordTextFieldBorder.heightAnchor.constraint(equalToConstant: Dimensions.textFieldHeight),
-            
-            // password text field
-            passwordTextField.topAnchor.constraint(equalTo: passwordTextFieldBorder.topAnchor, constant: Dimensions.margin),
-            passwordTextField.leadingAnchor.constraint(equalTo: passwordTextFieldBorder.leadingAnchor, constant: Dimensions.margin),
-            passwordTextField.trailingAnchor.constraint(equalTo: passwordIcon.leadingAnchor),
-            passwordTextField.bottomAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: -Dimensions.margin),
-            
-            // password text field icon
-            passwordIcon.centerYAnchor.constraint(equalTo: passwordTextFieldBorder.centerYAnchor),
-            passwordIcon.trailingAnchor.constraint(equalTo: passwordTextFieldBorder.trailingAnchor, constant:  -Dimensions.margin),
-            passwordIcon.heightAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
-            passwordIcon.widthAnchor.constraint(equalToConstant: Dimensions.textFieldIconSizes),
-            
-            // forgot login
-            forgotLogin.topAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.margin),
-            forgotLogin.leadingAnchor.constraint(equalTo: passwordTextFieldBorder.leadingAnchor, constant: Dimensions.usernameAndPasswordMargin),
-            
-            // forgot password
-            forgotPassword.topAnchor.constraint(equalTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.margin),
-            forgotPassword.trailingAnchor.constraint(equalTo: passwordTextFieldBorder.trailingAnchor, constant: -Dimensions.usernameAndPasswordMargin),
+            // login credentials
+            loginCredentialsView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            loginCredentialsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
+            loginCredentialsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             
             // sign in button
-            signInButton.topAnchor.constraint(greaterThanOrEqualTo: passwordTextFieldBorder.bottomAnchor, constant: Dimensions.textFieldToButtonSpacing),
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             signInButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight),
@@ -243,9 +103,19 @@ class LoginViewController: UIViewController {
             signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: Dimensions.margin),
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight),
-            signInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
+            signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
             -Dimensions.bottomMargin)
         ])
+    }
+    
+    private func setupDelegates() {
+        loginCredentialsView.loginTextField.delegate = self
+        loginCredentialsView.passwordTextField.delegate = self
+    }
+    
+    private func addTargets() {
+        loginCredentialsView.forgotLogin.addTarget(self, action: #selector(forgotLoginTapped(_:)), for: .touchUpInside)
+        loginCredentialsView.forgotPassword.addTarget(self, action: #selector(forgotPasswordTapped(_:)), for: .touchUpInside)
     }
     
 }
@@ -262,7 +132,7 @@ extension LoginViewController {
     }
     
     @objc private func signIn() {
-        guard let email = loginTextField.text, let password = passwordTextField.text else { return }
+        guard let email = loginCredentialsView.loginTextField.text, let password = loginCredentialsView.passwordTextField.text else { return }
         showLoadingIndicator()
         Auth.auth().signIn(withEmail: email, password: password, completion:  { result, error in
             self.hideLoadingIndicator()
@@ -276,7 +146,7 @@ extension LoginViewController {
     
     @objc private func signUp() {
         // TODO: Move this code to the sign up view controller
-        guard let email = loginTextField.text, let password = passwordTextField.text else { return }
+        guard let email = loginCredentialsView.loginTextField.text, let password = loginCredentialsView.passwordTextField.text else { return }
         showLoadingIndicator()
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             self.hideLoadingIndicator()
@@ -297,8 +167,8 @@ extension LoginViewController {
     }
 
     @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        loginTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        loginCredentialsView.loginTextField.resignFirstResponder()
+        loginCredentialsView.passwordTextField.resignFirstResponder()
     }
     
 }
@@ -306,10 +176,10 @@ extension LoginViewController {
 // MARK: TextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == loginTextField {
-            passwordTextField.becomeFirstResponder()
+        if textField == loginCredentialsView.loginTextField {
+            loginCredentialsView.passwordTextField.becomeFirstResponder()
         } else {
-            passwordTextField.resignFirstResponder()
+            loginCredentialsView.passwordTextField.resignFirstResponder()
         }
         return true
     }
