@@ -14,13 +14,10 @@ class LoginViewController: UIViewController {
     // MARK: - Dimensions
     private struct Dimensions {
         static let margin: CGFloat = 16
-        static let textFieldToButtonSpacing: CGFloat = 35
-        static let textFieldContainerMargin: CGFloat = 10
         static let bottomMargin: CGFloat = 90
         static let buttonHeight: CGFloat = 50
         static let activityIndicatorHeightAndWidth: CGFloat = 100
-        static let logoTopMargin: CGFloat = 50
-        static let logoHeightAndWidth: CGFloat = 100
+        static let topMargin: CGFloat = 50
     }
     
     // MARK: - Views
@@ -88,7 +85,7 @@ class LoginViewController: UIViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             // header
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Dimensions.logoTopMargin),
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Dimensions.topMargin),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             
