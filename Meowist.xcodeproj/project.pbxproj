@@ -11,6 +11,7 @@
 		AC35FF3E250ED83A00FFFC1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC35FF3D250ED83A00FFFC1F /* Localizable.strings */; };
 		AC35FF40250EE13200FFFC1F /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35FF3F250EE13100FFFC1F /* LoginHeaderView.swift */; };
 		AC35FF43250EE6A000FFFC1F /* LoginCredentialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35FF42250EE6A000FFFC1F /* LoginCredentialsView.swift */; };
+		AC35FF46250EF65B00FFFC1F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35FF45250EF65B00FFFC1F /* SignUpViewController.swift */; };
 		AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */; };
 		ACB22DA3250DEAA100A5083B /* meowistLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = ACB22DA2250DEAA100A5083B /* meowistLogo.png */; };
 		ACB22DA5250DEF3A00A5083B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB22DA4250DEF3A00A5083B /* Theme.swift */; };
@@ -43,6 +44,7 @@
 		AC35FF3D250ED83A00FFFC1F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		AC35FF3F250EE13100FFFC1F /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginHeaderView.swift; path = /Users/bhrs/Documents/Personal/Meowist/Meowist/Login/LoginHeaderView.swift; sourceTree = "<absolute>"; };
 		AC35FF42250EE6A000FFFC1F /* LoginCredentialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentialsView.swift; sourceTree = "<group>"; };
+		AC35FF45250EF65B00FFFC1F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Meowist/SignUpViewController.swift; sourceTree = "<group>"; };
 		AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACB22DA2250DEAA100A5083B /* meowistLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meowistLogo.png; sourceTree = "<group>"; };
 		ACB22DA4250DEF3A00A5083B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -111,6 +113,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AC35FF44250EF63500FFFC1F /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AC35FF45250EF65B00FFFC1F /* SignUpViewController.swift */,
+			);
+			name = SignUp;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		ACC1B229250DE13A007A9B02 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +177,7 @@
 				ACC1B22A250DE155007A9B02 /* ReusableViews */,
 				ACC1B22B250DE183007A9B02 /* Resources */,
 				ACC1B229250DE13A007A9B02 /* Login */,
+				AC35FF44250EF63500FFFC1F /* SignUp */,
 				ACFB56D4250DA4CE006AA8BB /* Main.storyboard */,
 				ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */,
 				ACFB56DC250DA4CF006AA8BB /* Info.plist */,
@@ -339,6 +351,7 @@
 			files = (
 				ACC1B228250DCA3D007A9B02 /* CustomLoadingIndicatorView.swift in Sources */,
 				AC35FF40250EE13200FFFC1F /* LoginHeaderView.swift in Sources */,
+				AC35FF46250EF65B00FFFC1F /* SignUpViewController.swift in Sources */,
 				ACFB56D3250DA4CE006AA8BB /* LoginViewController.swift in Sources */,
 				ACB22DA5250DEF3A00A5083B /* Theme.swift in Sources */,
 				AC35FF43250EE6A000FFFC1F /* LoginCredentialsView.swift in Sources */,
