@@ -19,7 +19,6 @@
 		ACFB56CF250DA4CE006AA8BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */; };
 		ACFB56D1250DA4CE006AA8BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56D0250DA4CE006AA8BB /* SceneDelegate.swift */; };
 		ACFB56D3250DA4CE006AA8BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56D2250DA4CE006AA8BB /* LoginViewController.swift */; };
-		ACFB56D6250DA4CE006AA8BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFB56D4250DA4CE006AA8BB /* Main.storyboard */; };
 		ACFB56D8250DA4CF006AA8BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACFB56D7250DA4CF006AA8BB /* Assets.xcassets */; };
 		ACFB56DB250DA4CF006AA8BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */; };
 		ACFB56E6250DA4CF006AA8BB /* MeowistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB56E5250DA4CF006AA8BB /* MeowistTests.swift */; };
@@ -53,7 +52,6 @@
 		ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFB56D0250DA4CE006AA8BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ACFB56D2250DA4CE006AA8BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		ACFB56D5250DA4CE006AA8BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACFB56D7250DA4CF006AA8BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACFB56DA250DA4CF006AA8BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACFB56DC250DA4CF006AA8BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,11 +172,10 @@
 			children = (
 				ACFB56CE250DA4CE006AA8BB /* AppDelegate.swift */,
 				ACFB56D0250DA4CE006AA8BB /* SceneDelegate.swift */,
-				ACC1B22A250DE155007A9B02 /* ReusableViews */,
 				ACC1B22B250DE183007A9B02 /* Resources */,
+				ACC1B22A250DE155007A9B02 /* ReusableViews */,
 				ACC1B229250DE13A007A9B02 /* Login */,
 				AC35FF44250EF63500FFFC1F /* SignUp */,
-				ACFB56D4250DA4CE006AA8BB /* Main.storyboard */,
 				ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */,
 				ACFB56DC250DA4CF006AA8BB /* Info.plist */,
 				AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */,
@@ -283,7 +280,6 @@
 				AC35FF3E250ED83A00FFFC1F /* Localizable.strings in Resources */,
 				AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */,
 				ACFB56D8250DA4CF006AA8BB /* Assets.xcassets in Resources */,
-				ACFB56D6250DA4CE006AA8BB /* Main.storyboard in Resources */,
 				ACB22DA3250DEAA100A5083B /* meowistLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,14 +375,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ACFB56D4250DA4CE006AA8BB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ACFB56D5250DA4CE006AA8BB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ACFB56D9250DA4CF006AA8BB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

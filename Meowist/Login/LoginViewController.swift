@@ -59,6 +59,10 @@ class LoginViewController: UIViewController {
     )
 
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -70,7 +74,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Setups
     private func setupView() {
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard (_:))))
     }
@@ -128,36 +131,10 @@ extension LoginViewController {
     }
     
     @objc private func signUpTapped(_ sender: UIButton) {
-        signUp()
+        let signUpViewController = SignUpViewController()
+        navigationController?.pushViewController(signUpViewController, animated: true)
     }
-    
-    @objc private func signIn() {
-        guard let email = loginCredentialsView.loginTextField.text, let password = loginCredentialsView.passwordTextField.text else { return }
-        showLoadingIndicator()
-        Auth.auth().signIn(withEmail: email, password: password, completion:  { result, error in
-            self.hideLoadingIndicator()
-            guard error == nil else {
-                self.presentAlert(with: NSLocalizedString("general_alert_title", comment: ""), description: error?.localizedDescription ?? "")
-                return
-            }
-            self.presentAlert(with: NSLocalizedString("success_alert_title", comment: ""), description: result?.user.email ?? "")
-        })
-    }
-    
-    @objc private func signUp() {
-        // TODO: Move this code to the sign up view controller
-        guard let email = loginCredentialsView.loginTextField.text, let password = loginCredentialsView.passwordTextField.text else { return }
-        showLoadingIndicator()
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            self.hideLoadingIndicator()
-            guard error == nil else {
-                self.presentAlert(with: NSLocalizedString("general_alert_title", comment: ""), description: error?.localizedDescription)
-                return
-            }
-            self.presentAlert(with: NSLocalizedString("success_alert_title", comment: ""), description: result?.user.email)
-        }
-    }
-    
+
     @objc private func forgotLoginTapped(_ sender: UIButton) {
         presentAlert(with: NSLocalizedString("coming_soon_alert_title", comment: ""))
     }
@@ -187,6 +164,19 @@ extension LoginViewController: UITextFieldDelegate {
 
 // MARK: - Private
 extension LoginViewController {
+    
+    private func signIn() {
+        guard let email = loginCredentialsView.loginTextField.text, let password = loginCredentialsView.passwordTextField.text else { return }
+        showLoadingIndicator()
+        Auth.auth().signIn(withEmail: email, password: password, completion:  { result, error in
+            self.hideLoadingIndicator()
+            guard error == nil else {
+                self.presentAlert(with: NSLocalizedString("general_alert_title", comment: ""), description: error?.localizedDescription ?? "")
+                return
+            }
+            self.presentAlert(with: NSLocalizedString("success_alert_title", comment: ""), description: result?.user.email ?? "")
+        })
+    }
     
     private func presentAlert(with title: String, description: String? = "") {
         let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
