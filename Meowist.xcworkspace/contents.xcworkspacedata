@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/bhrs/Documents/Personal/Meowist/Meowist/Login/LoginHeaderView.swift">
+   </FileRef>
+   <FileRef
       location = "group:Meowist.xcodeproj">
    </FileRef>
    <FileRef
