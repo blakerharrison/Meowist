@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     // MARK: - Dimensions
     private struct Dimensions {
         static let margin: CGFloat = 16
-        static let bottomMargin: CGFloat = 90
+        static let bottomMargin: CGFloat = 5
         static let buttonHeight: CGFloat = 50
         static let activityIndicatorHeightAndWidth: CGFloat = 100
         static let topMargin: CGFloat = 50
@@ -79,10 +79,9 @@ class LoginViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(headerView)
-        view.addSubview(loginCredentialsView)
-        view.addSubview(signInButton)
-        view.addSubview(signUpButton)
+        let subviews = [headerView, loginCredentialsView,
+                        signInButton,signUpButton]
+        subviews.forEach { view.addSubview($0) }
     }
 
     private func setupConstraints() {
@@ -98,16 +97,16 @@ class LoginViewController: UIViewController {
             loginCredentialsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             
             // sign in button
+            signInButton.topAnchor.constraint(equalTo: loginCredentialsView.bottomAnchor, constant: 40),
             signInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Dimensions.margin),
             signInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Dimensions.margin),
             signInButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight),
             
             // sign up button
-            signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: Dimensions.margin),
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: Dimensions.buttonHeight),
             signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
-            -Dimensions.bottomMargin)
+                                                    Dimensions.bottomMargin)
         ])
     }
     

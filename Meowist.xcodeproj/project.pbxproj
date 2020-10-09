@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CD9845E252FFE140077CE1C /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9845D252FFE140077CE1C /* LoginHeaderView.swift */; };
 		2EA929C18D560BA7134EC668 /* libPods-MeowistTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1EC842F740DBBF2BAB48 /* libPods-MeowistTests.a */; };
 		AC35FF3E250ED83A00FFFC1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC35FF3D250ED83A00FFFC1F /* Localizable.strings */; };
-		AC35FF40250EE13200FFFC1F /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35FF3F250EE13100FFFC1F /* LoginHeaderView.swift */; };
 		AC35FF43250EE6A000FFFC1F /* LoginCredentialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35FF42250EE6A000FFFC1F /* LoginCredentialsView.swift */; };
 		AC35FF46250EF65B00FFFC1F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35FF45250EF65B00FFFC1F /* SignUpViewController.swift */; };
 		AC9DB0AD250DA963002F4513 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */; };
@@ -38,10 +38,10 @@
 /* Begin PBXFileReference section */
 		03D376F496453D570B33B001 /* Pods-MeowistTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeowistTests.release.xcconfig"; path = "Target Support Files/Pods-MeowistTests/Pods-MeowistTests.release.xcconfig"; sourceTree = "<group>"; };
 		0A5A1EC842F740DBBF2BAB48 /* libPods-MeowistTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeowistTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CD9845D252FFE140077CE1C /* LoginHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHeaderView.swift; sourceTree = "<group>"; };
 		34064A6ACA578E20F856E66B /* libPods-Meowist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meowist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BEBBB90A7D41944A121E2D1 /* Pods-MeowistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeowistTests.debug.xcconfig"; path = "Target Support Files/Pods-MeowistTests/Pods-MeowistTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC35FF3D250ED83A00FFFC1F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		AC35FF3F250EE13100FFFC1F /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginHeaderView.swift; path = /Users/bhrs/Documents/Personal/Meowist/Meowist/Login/LoginHeaderView.swift; sourceTree = "<absolute>"; };
 		AC35FF42250EE6A000FFFC1F /* LoginCredentialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentialsView.swift; sourceTree = "<group>"; };
 		AC35FF45250EF65B00FFFC1F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Meowist/SignUpViewController.swift; sourceTree = "<group>"; };
 		AC9DB0AC250DA963002F4513 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		AC35FF41250EE14000FFFC1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AC35FF3F250EE13100FFFC1F /* LoginHeaderView.swift */,
+				2CD9845D252FFE140077CE1C /* LoginHeaderView.swift */,
 				AC35FF42250EE6A000FFFC1F /* LoginCredentialsView.swift */,
 			);
 			path = Views;
@@ -346,7 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC1B228250DCA3D007A9B02 /* CustomLoadingIndicatorView.swift in Sources */,
-				AC35FF40250EE13200FFFC1F /* LoginHeaderView.swift in Sources */,
+				2CD9845E252FFE140077CE1C /* LoginHeaderView.swift in Sources */,
 				AC35FF46250EF65B00FFFC1F /* SignUpViewController.swift in Sources */,
 				ACFB56D3250DA4CE006AA8BB /* LoginViewController.swift in Sources */,
 				ACB22DA5250DEF3A00A5083B /* Theme.swift in Sources */,
